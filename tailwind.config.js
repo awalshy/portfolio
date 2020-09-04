@@ -3,5 +3,5 @@ module.exports = {
     extends: {},
   },
   variants: {},
-  plugins: [],
+  plugins: [require('tailwindcss-textshadow')],
 }

@@ -1,213 +1,86 @@
-import Head from 'next/head'
+import React, { useState } from 'react'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
-export const Home = (): JSX.Element => (
-  <div>
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import Brightness3 from '@material-ui/icons/Brightness3'
+import BrightnessHigh from '@material-ui/icons/BrightnessHigh'
 
-    <main>
-      <h1 className="text-blue-500 text-5xl">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+import Layout from '../components/Layout'
+import Nav from '../components/Nav'
 
-      <p className="description">
-        Get started by editing <code>pages/index.tsx</code>
-      </p>
+export const Home = (): JSX.Element => {
+  const [dark, setDark] = useState(false)
+  const [hoverDark, setHoverDark] = useState(false)
 
-      <button
-        onClick={() => {
-          window.alert('With typescript and Jest')
-        }}
-      >
-        Test Button
-      </button>
-
-      <div className="grid">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
-
-        <a
-          href="https://github.com/vercel/next.js/tree/master/examples"
-          className="card"
+  return (
+    <Layout title="Arthur Walsh" dark={dark}>
+      <div className="h-screen">
+        <div
+          className="row flex justify-between py-1 px-3 cursor-pointer"
+          style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
         >
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Deploy &rarr;</h3>
-          <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-        </a>
+          <div
+            onClick={() => setDark(!dark)}
+            onMouseEnter={() => setHoverDark(true)}
+            onMouseLeave={() => setHoverDark(false)}
+          >
+            <text className="pr-1">{dark ? 'light' : 'dark'}</text>
+            {hoverDark && !dark && <Brightness3 />}
+            {hoverDark && dark && <BrightnessHigh />}
+          </div>
+          <div>
+            <text className="px-1">fr</text>
+            <text className="px-1">en</text>
+          </div>
+        </div>
+        <div className="h-full flex justify-center items-center top-0">
+          <div>
+            <div
+              className="h-6/10 text-shadow-xl"
+              style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
+            >
+              <div className="text-4xl">Hi I&apos;m</div>
+              <text className="text-6xl">Arthur Walsh</text>
+            </div>
+            <div
+              className="h-4/10 row flex justify-between text-md py-2"
+              style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
+            >
+              <div>Student, Freelancer.</div>
+              <div className="flex row items-center">
+                <AnchorLink href="#presentation">See My Work</AnchorLink>
+                <svg
+                  className="animate-bounce w-6 h-4"
+                  style={{
+                    color: dark ? '#E6E6E6' : '#1E2533',
+                    fill: 'none',
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                    strokeWidth: 2,
+                    stroke: 'currentcolor',
+                  }}
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
-
-    <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-      </a>
-    </footer>
-
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      main {
-        padding: 5rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer {
-        width: 100%;
-        height: 100px;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer img {
-        margin-left: 0.5rem;
-      }
-
-      footer a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .title a {
-        color: #0070f3;
-        text-decoration: none;
-      }
-
-      .title a:hover,
-      .title a:focus,
-      .title a:active {
-        text-decoration: underline;
-      }
-
-      .title {
-        margin: 0;
-        line-height: 1.15;
-        font-size: 4rem;
-      }
-
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 1.5rem;
-      }
-
-      code {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      .grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        max-width: 800px;
-        margin-top: 3rem;
-      }
-
-      .card {
-        margin: 1rem;
-        flex-basis: 45%;
-        padding: 1.5rem;
-        text-align: left;
-        color: inherit;
-        text-decoration: none;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
-        transition: color 0.15s ease, border-color 0.15s ease;
-      }
-
-      .card:hover,
-      .card:focus,
-      .card:active {
-        color: #0070f3;
-        border-color: #0070f3;
-      }
-
-      .card h3 {
-        margin: 0 0 1rem 0;
-        font-size: 1.5rem;
-      }
-
-      .card p {
-        margin: 0;
-        font-size: 1.25rem;
-        line-height: 1.5;
-      }
-
-      .logo {
-        height: 1em;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          width: 100%;
-          flex-direction: column;
-        }
-      }
-    `}</style>
-
-    <style jsx global>{`
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    `}</style>
-  </div>
-)
+      <Nav />
+      <div id="presentation" className="h-screen">
+        <div className="relative pb-16 pr-24 h-full">
+          <div
+            style={{ backgroundColor: '#1E2533' }}
+            className="w-full h-full"
+          ></div>
+          <div className="absolute top-0 right-0 shadow-xl">
+            <img src="/images/portrait.png" width={320} height={480} />
+          </div>
+        </div>
+      </div>
+    </Layout>
+  )
+}
 
 export default Home
