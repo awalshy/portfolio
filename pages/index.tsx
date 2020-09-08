@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import Nav from '../components/Nav'
 import LandingView from '../components/LandingView'
 import Profile from '../components/Profile'
+import Education from '../components/Education'
+import Competencies from '../components/Competencies'
 
 export const Home = (): JSX.Element => {
   const [dark, setDark] = useState(false)
@@ -13,6 +15,10 @@ export const Home = (): JSX.Element => {
       <LandingView dark={dark} setDark={setDark} />
       <Nav />
       <Profile />
+      <div className="h-screen flex">
+        <Education />
+        <Competencies />
+      </div>
     </Layout>
   )
 }

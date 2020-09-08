@@ -80,7 +80,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="absolute top-0 right-0 shadow-xl">
+        <div className="absolute right-0 shadow-xl" style={{ top: '3%' }}>
           <img src="/images/portrait.png" width={320} height={480} />
         </div>
       </div>
