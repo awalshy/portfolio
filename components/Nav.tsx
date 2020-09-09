@@ -3,8 +3,8 @@ import React from 'react'
 const Nav = () => {
   return (
     <nav
-      className="flex justify-between sticky top-0 py-3 px-8 z-40 border-b"
-      style={{ backgroundColor: '#e6e6e6', borderColor: '#1e2533' }}
+      className="flex justify-between sticky top-0 py-3 px-8 z-40"
+      style={{ backgroundColor: '#e6e6e6' }}
     >
       <div className="text-2xl">
         <text>Arthur Walsh</text>
