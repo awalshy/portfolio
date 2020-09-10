@@ -9,10 +9,11 @@ import Education from '../components/Education'
 import Competencies from '../components/Competencies'
 import Contact from '../components/Contact'
 
-export const Home = (): JSX.Element => {
+export const Home = ({ trackingId }): JSX.Element => {
   const [dark, setDark] = useState(false)
 
   useEffect(() => {
+    GA.initGA(trackingId)
     GA.pageGA('landingPage')
   }, [])
 
@@ -28,6 +29,10 @@ export const Home = (): JSX.Element => {
       <Contact />
     </Layout>
   )
+}
+
+Home.getInitialProps = () => {
+  return { trackingId: process.env.GA_TRACKING_ID }
 }
 
 export default Home
