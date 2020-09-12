@@ -74,12 +74,14 @@ const Contact = () => {
         >
           <div className="mb-4">
             <label
+              htmlFor="name"
               className="block text-gray-700 text-sm font-bold mb-2"
               style={{ color: '#1e2533' }}
             >
               Name
             </label>
             <input
+              id="name"
               style={{ color: '#1e2533' }}
               value={name}
               onChange={(event) => setName(event.target.value)}
@@ -90,12 +92,14 @@ const Contact = () => {
           </div>
           <div className="mb-4">
             <label
+              htmlFor="email"
               className="block text-gray-700 text-sm font-bold mb-2"
               style={{ color: '#1e2533' }}
             >
               Email
             </label>
             <input
+              id="email"
               style={{ color: '#1e2533' }}
               value={email}
               onChange={(event) => setEmail(event.target.value)}
@@ -106,12 +110,14 @@ const Contact = () => {
           </div>
           <div className="mb-6">
             <label
+              htmlFor="message"
               className="block text-gray-700 text-sm font-bold mb-2"
               style={{ color: '#1e2533' }}
             >
               Message
             </label>
             <textarea
+              id="message"
               style={{ color: '#1e2533' }}
               value={message}
               onChange={(event) => setMessage(event.target.value)}

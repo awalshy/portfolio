@@ -41,7 +41,9 @@ const LogoBlock = ({
             size={getSize()}
           />
         )}
-        {svg && <img src={svg} className="text-white w-20 h-20" />}
+        {svg && (
+          <img src={svg} alt="some-logo" className="text-white w-20 h-20" />
+        )}
       </div>
       <div className="text-center text-white">
         <text>{title}</text>
@@ -159,6 +161,7 @@ const Profile = () => {
         </div>
         <div className="absolute right-0 lg:shadow-xl flex justify-end top-0 md:top-3">
           <img
+            alt="myface"
             src="/images/portrait.png"
             width={320}
             height={480}

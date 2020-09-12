@@ -24,7 +24,7 @@ const LandingView = ({ dark, setDark }: LandingViewProps) => {
   return (
     <div className="h-screen relative">
       <div
-        className="row flex justify-between py-1 px-3 w-full z-40"
+        className="row flex justify-between py-1 px-3 w-full absolute top-0 left-0 z-40"
         style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
       >
         <div
@@ -42,7 +42,7 @@ const LandingView = ({ dark, setDark }: LandingViewProps) => {
           <text className="px-1">en</text>
         </div>
       </div>
-      <div className="h-screen w-full absolute top-0 left-0 flex justify-center items-center">
+      <div className="h-screen w-full absolute top-0 left-0 flex justify-center items-center z-0">
         <div>
           <div
             className="h-6/10 text-shadow-xl"
