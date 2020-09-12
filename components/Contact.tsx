@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
+import { GAEvent } from './GA'
 
 const Contact = () => {
   const [name, setName] = useState('')
@@ -20,6 +21,7 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    GAEvent('click', 'submit')
     setSending(true)
 
     if (!name || !email || !message) {
@@ -44,6 +46,7 @@ const Contact = () => {
         setName('')
         setEmail('')
         setMessage('')
+        GAEvent('email', 'sent')
       })
       .catch(() => {
         setError('An error occured sending the email... Sorry !')

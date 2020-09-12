@@ -13,8 +13,8 @@ export const Home = ({ trackingId }): JSX.Element => {
   const [dark, setDark] = useState(false)
 
   useEffect(() => {
-    GA.initGA(trackingId)
-    GA.pageGA('landingPage')
+    GA.GAInit(trackingId)
+    GA.GAPage('landingPage')
   }, [])
 
   return (
