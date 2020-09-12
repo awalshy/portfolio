@@ -11,6 +11,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="manifest" href="/manifest.json" />
+          <meta
+            name="google-site-verification"
+            content="qvnPBc-DtgslFEsKMFY1QE4tgrKgYYFmuOuSM-M3wqU"
+          />
         </Head>
         <body>
           <Main />
