@@ -49,33 +49,37 @@ const LandingView = ({ dark, setDark }: LandingViewProps) => {
             style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
           >
             <div className="text-4xl">Hi I&apos;m</div>
-            <text className="text-6xl">Arthur Walsh</text>
+            <text className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-6xl">
+              Arthur Walsh
+            </text>
           </div>
           <div
-            className="h-4/10 row flex justify-between text-md py-2"
+            className="h-4/10 row md:flex lg:flex justify-between text-md py-2"
             style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
           >
-            <div className="py-1">Student, Freelancer.</div>
+            <div className="py-1 flex justify-center">Student, Freelancer.</div>
             <div
-              className="flex row items-center border px-2 py-1 rounded-lg"
+              className="flex justify-center items-center border px-2 py-1 rounded-lg"
               onClick={() => GAEvent('click', 'see-work-button')}
               style={{ borderColor: '#1e2533' }}
             >
-              <AnchorLink href="#presentation">See My Work</AnchorLink>
-              <svg
-                className="animate-bounce w-6 h-4"
-                style={{
-                  color: dark ? '#E6E6E6' : '#1E2533',
-                  fill: 'none',
-                  strokeLinecap: 'round',
-                  strokeLinejoin: 'round',
-                  strokeWidth: 2,
-                  stroke: 'currentcolor',
-                }}
-                viewBox="0 0 24 24"
-              >
-                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-              </svg>
+              <div className="flex row">
+                <AnchorLink href="#presentation">See My Work</AnchorLink>
+                <svg
+                  className="animate-bounce w-6 h-4"
+                  style={{
+                    color: dark ? '#E6E6E6' : '#1E2533',
+                    fill: 'none',
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                    strokeWidth: 2,
+                    stroke: 'currentcolor',
+                  }}
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </div>
             </div>
           </div>
         </div>

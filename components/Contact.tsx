@@ -65,10 +65,10 @@ const Contact = () => {
       className="h-screen flex justify-center items-center"
       style={{ backgroundColor: '#1e2533' }}
     >
-      <div className="w-1/4">
+      <div className="w-3/4 md:w-1/2 lg:w-1/3">
         <div className="mb-8 text-orange-800 text-5xl text-center">Contact</div>
         <form
-          className="shadow-md rounded px-10 pt-8 pb-12 mb-4"
+          className="shadow-md rounded px-4 lg:px-10 pt-8 pb-8 lg:pb-12 mb-4"
           onSubmit={handleSubmit}
           style={{ backgroundColor: '#e6e6e6' }}
         >
@@ -122,7 +122,7 @@ const Contact = () => {
           <div className="flex items-center justify-end">
             {!submitted && !error && (
               <button
-                className={`hover:shadow ease-in duration-700 hover:py-3 hover:px-5 py-2 px-4 rounded-lg focus:outline-none ${
+                className={`hover:shadow py-2 px-4 rounded-lg focus:outline-none ${
                   sending ? 'animate-bounce' : ''
                 }`}
                 disabled={sending ? true : false}

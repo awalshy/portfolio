@@ -22,7 +22,7 @@ export const Home = ({ trackingId }): JSX.Element => {
       <LandingView dark={dark} setDark={setDark} />
       <Nav />
       <Profile />
-      <div className="h-screen flex">
+      <div className="lg:h-screen md:flex lg:flex">
         <Education />
         <Competencies />
       </div>
