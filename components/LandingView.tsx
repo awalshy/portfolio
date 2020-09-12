@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
+import { GAEvent } from '../components/GA'
+
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
@@ -10,18 +12,24 @@ type LandingViewProps = {
   setDark: (boolean) => void
 }
 
-const LandingView = ({ dark, setDark }) => {
+const LandingView = ({ dark, setDark }: LandingViewProps) => {
   const [hoverDark, setHoverDark] = useState(false)
 
+  const switchToDarkMode = () => {
+    if (dark) GAEvent('click', 'lightMode')
+    else GAEvent('click', 'darkMode')
+    setDark(!dark)
+  }
+
   return (
-    <div className="h-screen">
+    <div className="h-screen relative">
       <div
-        className="row flex justify-between py-1 px-3"
+        className="row flex justify-between py-1 px-3 w-full z-40"
         style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
       >
         <div
           className="cursor-pointer"
-          onClick={() => setDark(!dark)}
+          onClick={switchToDarkMode}
           onMouseEnter={() => setHoverDark(true)}
           onMouseLeave={() => setHoverDark(false)}
         >
@@ -34,7 +42,7 @@ const LandingView = ({ dark, setDark }) => {
           <text className="px-1">en</text>
         </div>
       </div>
-      <div className="h-full flex justify-center items-center top-0">
+      <div className="h-screen w-full absolute top-0 left-0 flex justify-center items-center">
         <div>
           <div
             className="h-6/10 text-shadow-xl"
@@ -47,8 +55,12 @@ const LandingView = ({ dark, setDark }) => {
             className="h-4/10 row flex justify-between text-md py-2"
             style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
           >
-            <div>Student, Freelancer.</div>
-            <div className="flex row items-center">
+            <div className="py-1">Student, Freelancer.</div>
+            <div
+              className="flex row items-center border px-2 py-1 rounded-lg"
+              onClick={() => GAEvent('click', 'see-work-button')}
+              style={{ borderColor: '#1e2533' }}
+            >
               <AnchorLink href="#presentation">See My Work</AnchorLink>
               <svg
                 className="animate-bounce w-6 h-4"

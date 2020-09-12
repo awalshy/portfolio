@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
+import * as GA from '../components/GA'
 import Layout from '../components/Layout'
 import Nav from '../components/Nav'
 import LandingView from '../components/LandingView'
@@ -8,8 +9,13 @@ import Education from '../components/Education'
 import Competencies from '../components/Competencies'
 import Contact from '../components/Contact'
 
-export const Home = (): JSX.Element => {
+export const Home = ({ trackingId }): JSX.Element => {
   const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    GA.GAInit(trackingId)
+    GA.GAPage('landingPage')
+  }, [])
 
   return (
     <Layout title="Arthur Walsh" dark={dark}>
@@ -23,6 +29,10 @@ export const Home = (): JSX.Element => {
       <Contact />
     </Layout>
   )
+}
+
+Home.getInitialProps = () => {
+  return { trackingId: process.env.GA_TRACKING_ID }
 }
 
 export default Home
