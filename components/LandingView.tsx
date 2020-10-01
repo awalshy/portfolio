@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import { GAEvent } from '../components/GA'
 
@@ -10,9 +9,11 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 type LandingViewProps = {
   dark: boolean
   setDark: (boolean) => void
+  page: number
+  nextPage: (number: number) => void
 }
 
-const LandingView = ({ dark, setDark }: LandingViewProps) => {
+const LandingView = ({ dark, setDark, page, nextPage }: LandingViewProps) => {
   const [hoverDark, setHoverDark] = useState(false)
 
   const switchToDarkMode = () => {
@@ -63,8 +64,14 @@ const LandingView = ({ dark, setDark }: LandingViewProps) => {
               onClick={() => GAEvent('click', 'see-work-button')}
               style={{ borderColor: '#1e2533' }}
             >
-              <div className="flex row">
-                <AnchorLink href="#presentation">See My Work</AnchorLink>
+              <div className="flex row cursor-pointer">
+                <div
+                  onClick={() => {
+                    nextPage(page + 1)
+                  }}
+                >
+                  See My Work
+                </div>
                 <svg
                   className="animate-bounce w-6 h-4"
                   style={{

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -54,6 +55,7 @@ const LogoBlock = ({
 
 const Profile = () => {
   const [width, setWidth] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     const handleWidthResize = () => {
@@ -88,8 +90,9 @@ const Profile = () => {
             <div className="flex justify-center mt-8">
               <div>
                 <div
-                  className="py-2 px-4 rounded-md shadow-xl hover:border-orange-800 hover:border-2 hover:text-orange-800 hover:scale-110 transition ease-in duration-200 transform"
+                  className="py-2 px-4 cursor-pointer rounded-md shadow-xl hover:border-orange-800 hover:border-2 hover:text-orange-800 hover:scale-110 transition ease-in duration-200 transform"
                   style={{ backgroundColor: '#e6e6e6' }}
+                  onClick={() => router.push('/projects')}
                 >
                   See my projects
                 </div>
