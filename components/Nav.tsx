@@ -6,7 +6,7 @@ const Nav = ({
   setPage,
 }: {
   page: number
-  setPage: (n: number) => void
+  setPage: (number) => void
 }) => {
   const router = useRouter()
   return (
@@ -43,14 +43,14 @@ const Nav = ({
         </text>
         <text
           onClick={() => setPage(3)}
-          className={`px-2 py-1 cursor-pointer ${
+          className={`px-2 py-1 cursor-pointer text-orange-800 ${
             page == 3 ? 'border-b-2 border-orange-800' : ''
           }`}
         >
-          Contact
+          Hire Me
         </text>
         <div
-          className="px-2 mx-2 py-1 text-orange-800 hover:text-blue-900 border border-orange-800 rounded-md"
+          className="px-2 mx-2 py-1 text-orange-800 hover:text-blue-900 border border-orange-800 cursor-pointer rounded-md"
           onClick={() => router.push('/projects')}
         >
           My Projects

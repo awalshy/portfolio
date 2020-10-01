@@ -62,6 +62,7 @@ const Contact = () => {
 
   return (
     <div
+      id="#hireme"
       className="h-screen flex justify-center items-center"
       style={{ backgroundColor: '#1e2533' }}
     >

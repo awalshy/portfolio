@@ -23,7 +23,13 @@ export const Home = ({ trackingId }): JSX.Element => {
   }
 
   return (
-    <Layout title="Arthur Walsh" dark={dark} page={page} setPage={setPage}>
+    <Layout
+      title="Arthur Walsh"
+      dark={dark}
+      page={page}
+      setPage={setPage}
+      landingPage
+    >
       <div className="relative">
         <ReactPageScroller
           pageOnChange={handlePageChange}
