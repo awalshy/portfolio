@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 const SkillCube = ({
   title,
@@ -41,13 +42,17 @@ const SkillBlock = () => (
   </div>
 )
 
-const Competencies = () => {
+const Competencies = ({ dark }: { dark: boolean }) => {
   return (
-    <div className="w-full lg:w-1/2 py-12 lg:py-24">
+    <div
+      className={`w-full lg:w-1/2 py-12 lg:py-24 ${
+        dark ? 'border-l border-white' : ''
+      }`}
+    >
       <div className="h-1/2 px-12 lg:px-24">
         <div
           className="border-b border-orange-800 pb-12 lg:px-12"
-          style={{ color: '#1E2533' }}
+          style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
         >
           <h1 className="text-2xl md:text-3xl lg:text-5xl">Languages</h1>
           <div className="flex-row pt-12 text-lg lg:text-2xl text-center">
@@ -59,7 +64,7 @@ const Competencies = () => {
       </div>
       <div className="h-1/2 py-4 px-8 lg:px-32">
         <h1
-          style={{ color: '#1E2533' }}
+          style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
           className="text-2xl md:text-3xl lg:text-5xl py-8 lg:py-12"
         >
           Skills
@@ -72,4 +77,8 @@ const Competencies = () => {
   )
 }
 
-export default Competencies
+const mapStateToProps = (state) => ({
+  dark: state.darkTheme.value,
+})
+
+export default connect(mapStateToProps)(Competencies)
