@@ -27,12 +27,17 @@ const ImageBlock = ({
   isPortrait?: boolean
 }) => {
   const height = window.innerHeight * 0.6
-  const width = (window.innerWidth / 2) * 0.8
+  const width = (window.innerWidth / 2) * 0.6
+  const isSm = window.innerWidth < 450
 
-  const styles = isPortrait ? { height } : { width }
+  const styles = isPortrait
+    ? isSm
+      ? { width }
+      : { height }
+    : { width: isSm ? width * 3 : width }
 
   return (
-    <div className="flex justify-center pt-20">
+    <div className="flex justify-center pt-12 xl:pt-20">
       <div>
         <img style={styles} src={imageSource} alt="illustration" />
       </div>
@@ -59,17 +64,24 @@ const DescriptionBlock = ({
 }): JSX.Element => {
   return (
     <div className="" style={{ height: '100%' }}>
-      <p className="text-white py-20 px-8 text-2xl">{content}</p>
-      <div className="flex flex-row my-16">
-        <h4 className="text-3xl px-8" style={{ color }}>
+      <p className="text-white py-4 md:py-12 lg:py-16 xl:py-20 px-8 text-md md:text-lg lg:text-xl xl:text-2xl">
+        {content}
+      </p>
+      <div className="flex flex-col lg:flex-row xl:flex-row px-8 my-4 md:my-8 lg:my-8 xl:my-16 text-center">
+        <h4
+          className="text-md md:text-lg lg:text-xl xl:text-3xl px-8"
+          style={{ color }}
+        >
           Technology used:
         </h4>
-        <p className="text-white text-3xl">{technology}</p>
+        <p className="text-white text-md md:text-lg lg:text-xl xl:text-3xl">
+          {technology}
+        </p>
       </div>
-      <div className="py-16 flex flex-row justify-center">
+      <div className="py-4 md:py-12 lg:py-16 xl:py-16 flex flex-col lg:flex-row xl:flex-row justify-center items-center">
         <Link href={linkAdress}>
           <p
-            className="flex items-center text-white mr-8 px-8 py-4 border rounded-md hover:bg-orange-800 cursor-pointer"
+            className="flex items-center text-white mr-8 mb-8 px-8 py-4 border rounded-md hover:bg-orange-800 cursor-pointer"
             style={{ borderColor: color }}
           >
             {linkTitle}
@@ -113,10 +125,12 @@ const Project = ({
   return (
     <div style={{ backgroundColor, height: '100%' }}>
       <div className="flex flex-row w-full justify-center pt-20">
-        <h1 className="text-6xl text-white">{title}</h1>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">
+          {title}
+        </h1>
       </div>
-      <div className="flex">
-        <div className="w-1/2">
+      <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
+        <div className="w-full lg:w-1/2 xl:w-1/2">
           {inverted && (
             <ImageBlock
               imageSource={imageSource}
@@ -136,9 +150,12 @@ const Project = ({
           )}
         </div>
         <div style={{ paddingTop: '5%', paddingBottom: '5%' }}>
-          <div className="border h-full" style={{ borderColor: color }}></div>
+          <div
+            className="md: border lg:border xl:border h-full"
+            style={{ borderColor: color }}
+          ></div>
         </div>
-        <div className="w-1/2">
+        <div className="w-full lg:w-1/2 xl:w-1/2">
           {!inverted && (
             <ImageBlock
               imageSource={imageSource}

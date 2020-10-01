@@ -28,7 +28,7 @@ const Layout = ({
           href={dark ? '/icons/favicon-dark.ico' : '/icons/favicon-light.ico'}
         />
       </Head>
-      {page !== 0 && (
+      {page !== 0 && landingPage && (
         <header>
           <Nav page={page} setPage={setPage} />
         </header>

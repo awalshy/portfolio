@@ -42,7 +42,7 @@ const SkillBlock = () => (
   </div>
 )
 
-const Competencies = ({ dark }: { dark: boolean }) => {
+const Competencies = ({ dark, width }: { dark: boolean; width: number }) => {
   return (
     <div
       className={`w-full lg:w-1/2 py-12 lg:py-24 ${
@@ -51,7 +51,9 @@ const Competencies = ({ dark }: { dark: boolean }) => {
     >
       <div className="h-1/2 px-12 lg:px-24">
         <div
-          className="border-b border-orange-800 pb-12 lg:px-12"
+          className={`${
+            width > 1024 ? 'border-b border-orange-800' : ''
+          } pb-12 lg:px-12`}
           style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
         >
           <h1 className="text-2xl md:text-3xl lg:text-5xl">Languages</h1>
@@ -62,23 +64,26 @@ const Competencies = ({ dark }: { dark: boolean }) => {
           </div>
         </div>
       </div>
-      <div className="h-1/2 py-4 px-8 lg:px-32">
-        <h1
-          style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
-          className="text-2xl md:text-3xl lg:text-5xl py-8 lg:py-12"
-        >
-          Skills
-        </h1>
-        <div className="flex-col align-center">
-          <SkillBlock />
+      {width > 1024 && (
+        <div className="h-1/2 py-4 px-8 lg:px-32">
+          <h1
+            style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
+            className="text-2xl md:text-3xl lg:text-5xl py-8 lg:py-12"
+          >
+            Skills
+          </h1>
+          <div className="flex-col align-center">
+            <SkillBlock />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
   dark: state.darkTheme.value,
+  width: state.screenSize.width,
 })
 
 export default connect(mapStateToProps)(Competencies)

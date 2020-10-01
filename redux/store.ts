@@ -10,6 +10,9 @@ const initialState = {
   darkTheme: {
     value: false,
   },
+  screenSize: {
+    width: 0,
+  },
 }
 
 const initStore = (preloadedState = initialState) => {

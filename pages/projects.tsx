@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactPageScroller from 'react-page-scroller'
+import { useDispatch } from 'react-redux'
 
 import Layout from '../components/Layout'
 import Project from '../components/Project'
@@ -7,10 +8,25 @@ import MoreProjects from '../components/MoreProjects'
 
 const Projects = () => {
   const [page, setPage] = useState(0)
+  const dispatch = useDispatch()
 
   const handlePageChange = (number) => {
     setPage(number)
   }
+
+  const screenSizeHandler = () => {
+    const width = window.innerWidth
+    dispatch({
+      type: 'RESIZE',
+      value: width,
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', screenSizeHandler)
+
+    return () => window.removeEventListener('resize', screenSizeHandler)
+  }, [])
 
   return (
     <Layout title="Project | Arthur Walsh">

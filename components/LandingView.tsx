@@ -118,8 +118,13 @@ const LandingView = ({ dark, setDark, page, nextPage }: LandingViewProps) => {
       <div className="h-screen w-full absolute top-0 left-0 flex justify-center items-center z-0">
         <div>
           <div
-            className="h-6/10 text-shadow-xl"
-            style={{ color: dark ? '#E6E6E6' : '#1E2533' }}
+            className="h-6/10"
+            style={{
+              color: dark ? '#E6E6E6' : '#1E2533',
+              textShadow: `7px 7px 7px ${
+                dark ? 'rgba(230, 230, 230, 0.6)' : 'rgba(30, 37, 51, 0.7)'
+              }`,
+            }}
           >
             <div className="text-4xl">Hi I&apos;m</div>
             <text className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-6xl">
