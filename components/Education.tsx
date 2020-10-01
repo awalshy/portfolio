@@ -20,7 +20,7 @@ const EducationBlock = ({ title, start, end }: EdBlock) => (
 const Education = () => {
   return (
     <div
-      className="w-full lg:w-1/2 py-12 lg:py-24 px-8 lg:px-12"
+      className="w-full lg:w-1/2 py-20 lg:py-24 px-8 lg:px-12"
       style={{ backgroundColor: '#1E2533' }}
     >
       <div className="text-orange-800 text-2xl md:text-3xl lg:text-5xl">

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
+import { connect } from 'react-redux'
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -33,8 +34,11 @@ const LogoBlock = ({
   }
 
   return (
-    <div className="block">
-      <div className="flex justify-center mx-5 my-2 w-20 h-20">
+    <div className="block mx-2 lg:mx-3 xl:mx-5">
+      <div
+        className="flex flex-row justify-center my-2"
+        style={{ width: screenWidth * 0.05 }}
+      >
         {logo && (
           <FontAwesomeIcon
             className="text-white"
@@ -42,9 +46,7 @@ const LogoBlock = ({
             size={getSize()}
           />
         )}
-        {svg && (
-          <img src={svg} alt="some-logo" className="text-white w-20 h-20" />
-        )}
+        {svg && <img src={svg} alt="some-logo" className="text-white" />}
       </div>
       <div className="text-center text-white">
         <text>{title}</text>
@@ -53,21 +55,8 @@ const LogoBlock = ({
   )
 }
 
-const Profile = () => {
-  const [width, setWidth] = useState(0)
+const Profile = ({ width }: { width: number }) => {
   const router = useRouter()
-
-  useEffect(() => {
-    const handleWidthResize = () => {
-      setWidth(window.innerWidth)
-    }
-
-    handleWidthResize()
-    window.addEventListener('resize', handleWidthResize)
-    return () => {
-      window.removeEventListener('resize', handleWidthResize)
-    }
-  })
 
   return (
     <div id="presentation" className="sm:h-screen md:h-screen lg:h-screen">
@@ -98,68 +87,70 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full lg:flex justify-between row h-4/10 mt-8 lg:mt-28">
-              <div className="mb-12 lg:mb-0">
-                <div className="text-center text-lg text-orange-800 py-4">
-                  Technologies I like to use
+            {width > 450 && (
+              <div className="w-full lg:flex justify-between row h-4/10 mt-8 lg:mt-28">
+                <div className="mb-12 lg:mb-0">
+                  <div className="text-center text-lg text-orange-800 py-4">
+                    Technologies I like to use
+                  </div>
+                  <div className="flex flex-wrap row w-full justify-center">
+                    <LogoBlock title="Git" logo={faGit} screenWidth={width} />
+                    <LogoBlock
+                      title="TypeScript"
+                      svg="/icons/typescript.svg"
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="ReactJS"
+                      logo={faReact}
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="NextJS"
+                      svg="/icons/next-js.svg"
+                      screenWidth={width}
+                    />
+                  </div>
                 </div>
-                <div className="flex flex-wrap row w-full justify-center">
-                  <LogoBlock title="Git" logo={faGit} screenWidth={width} />
-                  <LogoBlock
-                    title="TypeScript"
-                    svg="/icons/typescript.svg"
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="ReactJS"
-                    logo={faReact}
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="NextJS"
-                    svg="/icons/next-js.svg"
-                    screenWidth={width}
-                  />
+                <div>
+                  <div className="text-center text-lg text-orange-800 py-4">
+                    Tools I like to use
+                  </div>
+                  <div className="flex row flex-wrap justify-center">
+                    <LogoBlock
+                      title="GitHub"
+                      logo={faGithub}
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="Digital Ocean"
+                      svg="/icons/digital-ocean.svg"
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="GitKraken"
+                      logo={faGitkraken}
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="Ubuntu"
+                      svg="/icons/ubuntu.svg"
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="Docker"
+                      logo={faDocker}
+                      screenWidth={width}
+                    />
+                    <LogoBlock
+                      title="VSCode"
+                      svg="/icons/vscode.svg"
+                      screenWidth={width}
+                    />
+                  </div>
                 </div>
               </div>
-              <div>
-                <div className="text-center text-lg text-orange-800 py-4">
-                  Tools I like to use
-                </div>
-                <div className="flex row flex-wrap justify-center">
-                  <LogoBlock
-                    title="GitHub"
-                    logo={faGithub}
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="Digital Ocean"
-                    svg="/icons/digital-ocean.svg"
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="GitKraken"
-                    logo={faGitkraken}
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="Ubuntu"
-                    svg="/icons/ubuntu.svg"
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="Docker"
-                    logo={faDocker}
-                    screenWidth={width}
-                  />
-                  <LogoBlock
-                    title="VSCode"
-                    svg="/icons/vscode.svg"
-                    screenWidth={width}
-                  />
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <div className="absolute right-0 lg:shadow-xl flex justify-end top-0 md:top-3">
@@ -176,4 +167,8 @@ const Profile = () => {
   )
 }
 
-export default Profile
+const mapToProps = (state) => ({
+  width: state.screenSize.width,
+})
+
+export default connect(mapToProps)(Profile)

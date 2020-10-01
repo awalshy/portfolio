@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReactPageScroller from 'react-page-scroller'
+import { useDispatch } from 'react-redux'
 
 import * as GA from '../components/GA'
 import Layout from '../components/Layout'
@@ -12,10 +13,23 @@ import Contact from '../components/Contact'
 export const Home = ({ trackingId }): JSX.Element => {
   const [dark, setDark] = useState(false)
   const [page, setPage] = useState(0)
+  const dispatch = useDispatch()
+
+  const screenSizeHandler = () => {
+    const width = window.innerWidth
+    dispatch({
+      type: 'RESIZE',
+      value: width,
+    })
+  }
 
   useEffect(() => {
     GA.GAInit(trackingId)
     GA.GAPage('landingPage')
+    dispatch({ type: 'RESIZE', value: window.innerWidth })
+    window.addEventListener('resize', screenSizeHandler)
+
+    return () => window.removeEventListener('resize', screenSizeHandler)
   }, [])
 
   const handlePageChange = (number) => {
@@ -42,7 +56,7 @@ export const Home = ({ trackingId }): JSX.Element => {
             setDark={setDark}
           />
           <Profile />
-          <div className="lg:h-screen md:flex lg:flex">
+          <div className="lg:h-screen xl:flex lg:flex">
             <Education />
             <Competencies />
           </div>

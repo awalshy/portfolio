@@ -34,11 +34,14 @@ const Icon = React.forwardRef(
 const MoreProjects = (): JSX.Element => {
   return (
     <div className="h-screen relative" style={{ backgroundColor: '#5C75AA' }}>
-      <h2 className="text-6xl text-center py-20" style={{ color: '#1E2533' }}>
+      <h2
+        className="text-3xl mg:text-4xl lg:text-6xl xl:text-6xl text-center py-20"
+        style={{ color: '#1E2533' }}
+      >
         Want to see more ?
       </h2>
-      <div className="flex justify-center text-2xl text-white">
-        <div className="flex flex-col text-center">
+      <div className="flex justify-center text-mg mg:text-lg lg:text-xl xl:text-2xl text-white">
+        <div className="flex flex-col text-center px-4">
           <p>
             You can follow me on social medias ! I&apos;ll publish more projects
             soon
@@ -53,7 +56,7 @@ const MoreProjects = (): JSX.Element => {
       <div className="absolute bottom-0 flex flex-row py-12 justify-center w-full">
         <div className="flex flex-col">
           <h6
-            className="text-4xl pb-8 text-center"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl pb-8 text-center"
             style={{ color: '#1E2533' }}
           >
             Follow me on
